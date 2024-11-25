@@ -1,39 +1,40 @@
 <?php
 
+require __DIR__ . "/src/Modelo/Filme.php";
 require __DIR__ . "/src/funcoes.php";
 
 echo "Bem-vindo(a) ao screen match!\n";
 
-$nomeFilme = "Top Gun - Maverick";
+// $nomeFilme = "Top Gun - Maverick";
 
-$anoLancamento = 2022;
+// $anoLancamento = 2022;
 
-$quantidadeDeNotas = $argc - 1;
-$notas = [];
+// $quantidadeDeNotas = $argc - 1;
+// $notas = [];
 
-for ($contador = 1; $contador < $argc; $contador++) {
-    $notas[] = (float) $argv[$contador];
-}
+// for ($contador = 1; $contador < $argc; $contador++) {
+//     $notas[] = (float) $argv[$contador];
+// }
 
-$notaFilme = array_sum($notas) / $quantidadeDeNotas;
-$planoPrime = true;
+// $notaFilme = array_sum($notas) / $quantidadeDeNotas;
+// $planoPrime = true;
 
-$incluidoNoPlano = incluidoNoPlano($planoPrime, $anoLancamento);
+// $incluidoNoPlano = incluidoNoPlano($planoPrime, $anoLancamento);
 
-echo "Nome do filme: " . $nomeFilme . "\n";
-echo "Nota do filme: $notaFilme\n";
-echo "Ano de lançamento: $anoLancamento\n";
+// echo "Nome do filme: " . $nomeFilme . "\n";
+// echo "Nota do filme: $notaFilme\n";
+// echo "Ano de lançamento: $anoLancamento\n";
 
-exibeMensagemLancamento($anoLancamento);
+// exibeMensagemLancamento($anoLancamento);
 
-$genero = match ($nomeFilme) {
-    "Top Gun - Maverick" => "ação",
-    "Thor: Ragnarok" => "super-herói",
-    "Se beber não case" => "comédia",
-    default => "gênero desconhecido",
-};
+// $genero = match ($nomeFilme) {
+//     "Top Gun - Maverick" => "ação",
+//     "Thor: Ragnarok" => "super-herói",
+//     "Se beber não case" => "comédia",
+//     default => "gênero desconhecido",
+// };
 
-echo "O gênero do filme é: $genero\n";
+// echo "O gênero do filme é: $genero\n";
 
 $filme = criaFilme(
     nota: 7.8,
@@ -42,19 +43,22 @@ $filme = criaFilme(
     nome: "Thor: Ragnarok",
 );
 
-echo $filme["ano"];
+echo $filme->nome . PHP_EOL;
+echo $filme->genero . PHP_EOL;
+echo $filme->anoLancamento . PHP_EOL;
+echo $filme->nota . PHP_EOL;
 
-var_dump($notas);
-sort($notas);
-var_dump($notas);
-$menorNota = min($notas);
-var_dump($menorNota);
+// var_dump($notas);
+// sort($notas);
+// var_dump($notas);
+// $menorNota = min($notas);
+// var_dump($menorNota);
 
-var_dump($filme['nome']);
-$posicaoDoisPontos = strpos($filme['nome'], ':');
-var_dump($posicaoDoisPontos);
+// var_dump($filme->nome);
+// $posicaoDoisPontos = strpos($filme->nome, ':');
+// var_dump($posicaoDoisPontos);
 
-var_dump(substr($filme['nome'], 0, $posicaoDoisPontos));
+// var_dump(substr($filme->nome, 0, $posicaoDoisPontos));
 
 $filmeComoStringJson = json_encode($filme);
 file_put_contents(__DIR__ . '/filme.json', $filmeComoStringJson);
